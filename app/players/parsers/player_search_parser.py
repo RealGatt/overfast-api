@@ -69,7 +69,7 @@ class PlayerSearchParser(JSONParser):
                 {
                     "player_id": player_id,
                     "name": player["battleTag"],
-                    "avatar": player["avatar"],
+                    "avatar": player["portrait"],
                     "namecard": player.get("namecard"),
                     "title": get_player_title(player["title"]),
                     "career_url": f"{settings.app_base_url}/players/{player_id}",
