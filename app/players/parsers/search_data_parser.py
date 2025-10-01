@@ -36,6 +36,9 @@ class SearchDataParser(JSONParser):
             )
             return {}
 
+        print("Debugging parse_data data")
+        print(player_data)
+
         return player_data
 
     def get_blizzard_url(self, **kwargs) -> str:

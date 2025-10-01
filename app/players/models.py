@@ -45,6 +45,13 @@ class PlayerShort(BaseModel):
             "https://d15f34w2p8l1cc.cloudfront.net/overwatch/daeddd96e58a2150afa6ffc3c5503ae7f96afc2e22899210d444f45dee508c6c.png",
         ],
     )
+    portrait: HttpUrl | None = Field(
+        None,
+        description="URL of the player's avatar. Can be null if couldn't retrieve any",
+        examples=[
+            "https://d15f34w2p8l1cc.cloudfront.net/overwatch/daeddd96e58a2150afa6ffc3c5503ae7f96afc2e22899210d444f45dee508c6c.png",
+        ],
+    )
     namecard: HttpUrl | None = Field(
         None,
         description="URL of the player's namecard (or banner) if any",
@@ -211,6 +218,13 @@ class PlayerSummary(BaseModel):
         examples=["TeKrop"],
     )
     avatar: HttpUrl | None = Field(
+        None,
+        description="URL of the player's avatar. Can be null if couldn't retrieve any",
+        examples=[
+            "https://d15f34w2p8l1cc.cloudfront.net/overwatch/daeddd96e58a2150afa6ffc3c5503ae7f96afc2e22899210d444f45dee508c6c.png",
+        ],
+    )
+    portrait: HttpUrl | None = Field(
         None,
         description="URL of the player's avatar. Can be null if couldn't retrieve any",
         examples=[
