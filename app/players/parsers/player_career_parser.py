@@ -161,6 +161,39 @@ class PlayerCareerParser(BasePlayerParser):
         summary_div = profile_div.css_first("div.Profile-player--summaryWrapper")
         progression_div = profile_div.css_first("div.Profile-player--info")
         print("Debugging the player_data object")
+        
+        try:
+            print(summary_div.css_first("h1.Profile-player--name").text())
+        except Exception as e:
+            print(f"Error printing player name: {e}")
+        try:
+            print(self.player_data["summary"]["portrait"])
+        except Exception as e:
+            print(f"Error printing portrait: {e}")
+        try:
+            print(self.player_data["summary"].get("namecard"))
+        except Exception as e:
+            print(f"Error printing namecard: {e}")
+        try:
+            print(self.player_data["summary"]["lastUpdated"])
+        except Exception as e:
+            print(f"Error printing lastUpdated: {e}")
+        try:
+            print(get_player_title(self.player_data["summary"]["title"]))
+        except Exception as e:
+            print(f"Error printing player title: {e}")
+        try:
+            print(self.__get_endorsement(progression_div))
+        except Exception as e:
+            print(f"Error printing endorsement: {e}")
+        try:
+            print(self.__get_competitive_ranks(progression_div))
+        except Exception as e:
+            print(f"Error printing competitive ranks: {e}")
+        
+        
+        
+        
 
         return_obj = {
             "username": summary_div.css_first("h1.Profile-player--name").text(),
@@ -171,8 +204,6 @@ class PlayerCareerParser(BasePlayerParser):
             "competitive": self.__get_competitive_ranks(progression_div),
             "last_updated_at": self.player_data["summary"]["lastUpdated"],
         }
-
-        print(return_obj)
 
         return return_obj
 
