@@ -160,6 +160,8 @@ class PlayerCareerParser(BasePlayerParser):
         )
         summary_div = profile_div.css_first("div.Profile-player--summaryWrapper")
         progression_div = profile_div.css_first("div.Profile-player--info")
+		logger.info("Debugging the player_data object")
+		logger.info(self.player_data)
 
         return {
             "username": summary_div.css_first("h1.Profile-player--name").text(),
