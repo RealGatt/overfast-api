@@ -163,7 +163,7 @@ class PlayerCareerParser(BasePlayerParser):
 
         return {
             "username": summary_div.css_first("h1.Profile-player--name").text(),
-            "avatar": self.player_data["summary"]["portrait"],
+            "avatar": self.player_data["summary"]["avatar"],
             "namecard": self.player_data["summary"].get("namecard"),
             "title": get_player_title(self.player_data["summary"]["title"]),
             "endorsement": self.__get_endorsement(progression_div),
