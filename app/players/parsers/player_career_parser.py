@@ -191,21 +191,16 @@ class PlayerCareerParser(BasePlayerParser):
         except Exception as e:
             print(f"Error printing competitive ranks: {e}")
         
-        
-        
-        
 
-        return_obj = {
+        return {
             "username": summary_div.css_first("h1.Profile-player--name").text(),
             "avatar": self.player_data["summary"]["portrait"],
             "namecard": self.player_data["summary"].get("namecard"),
-            "title": get_player_title(self.player_data["summary"]["title"]),
+            "title": "",
             "endorsement": self.__get_endorsement(progression_div),
             "competitive": self.__get_competitive_ranks(progression_div),
             "last_updated_at": self.player_data["summary"]["lastUpdated"],
         }
-
-        return return_obj
 
     @staticmethod
     def __get_endorsement(progression_div: LexborNode) -> dict | None:
