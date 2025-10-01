@@ -161,17 +161,20 @@ class PlayerCareerParser(BasePlayerParser):
         summary_div = profile_div.css_first("div.Profile-player--summaryWrapper")
         progression_div = profile_div.css_first("div.Profile-player--info")
         print("Debugging the player_data object")
-        print(self.player_data)
 
-        return {
+        return_obj = {
             "username": summary_div.css_first("h1.Profile-player--name").text(),
-            "avatar": self.player_data["summary"]["avatar"],
+            "avatar": self.player_data["summary"]["portrait"],
             "namecard": self.player_data["summary"].get("namecard"),
             "title": get_player_title(self.player_data["summary"]["title"]),
             "endorsement": self.__get_endorsement(progression_div),
             "competitive": self.__get_competitive_ranks(progression_div),
             "last_updated_at": self.player_data["summary"]["lastUpdated"],
         }
+
+        print(return_obj)
+
+        return return_obj
 
     @staticmethod
     def __get_endorsement(progression_div: LexborNode) -> dict | None:
